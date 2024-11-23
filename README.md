@@ -24,9 +24,15 @@ After removing the rows, the filter on Column B was cleared.
 After the filtering and row removal process, the file was saved with the updated name “Previous Name - Column B” to reflect the changes.
 
 Key Highlights of the Code Functionality:
+
 User Input: The user selects a binary Excel file (e.g., .xlsb).
+
 Data Filtering and Removal:
+
 Column C: Filters for "Power Services Sales" and deletes other rows.
+
 Column J: Filters out rows where the value is "Other OEM Fleet - Non Contractual".
+
 Column B: Filters out rows with countries like Afghanistan, Iran, Syria, Sudan, and Palestinian Territory (Gaza Strip).
+
 File Saving: The processed file is saved with a new name, indicating the column being filtered.
