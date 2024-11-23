@@ -22,6 +22,7 @@ Palestinian Territory (Gaza Strip)
 After removing the rows, the filter on Column B was cleared.
 7. Save the File with Updated Name:
 After the filtering and row removal process, the file was saved with the updated name “Previous Name - Column B” to reflect the changes.
+
 Key Highlights of the Code Functionality:
 User Input: The user selects a binary Excel file (e.g., .xlsb).
 Data Filtering and Removal:
