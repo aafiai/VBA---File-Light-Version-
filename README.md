@@ -1,5 +1,5 @@
 # VBA---File-Light-Version-
-File Selection:
+1. File Selection:
 We created a process where the user is asked to select an Excel file using the file dialog. The file is then opened in the macro.
 2. Enable Filters:
 We ensured that filters were enabled in the file, allowing data to be filtered by different columns.
