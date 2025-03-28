@@ -1,0 +1,167 @@
+Sub IBATLite()
+
+    Dim ws As Worksheet
+
+    Dim filePath As String
+
+    Dim fileDialog As fileDialog
+
+    Dim lastRow As Long
+
+    Dim i As Long
+
+    Dim cellValue As String
+
+    Dim newFileName As String
+
+    Dim col As Integer
+
+   
+
+    ' Step 1: Ask the user to select the .xlsb file
+
+    Set fileDialog = Application.fileDialog(msoFileDialogFilePicker)
+
+    fileDialog.Filters.Clear
+
+    fileDialog.Filters.Add "Binary Excel Files", "*.xlsb"
+
+   
+
+    If fileDialog.Show = -1 Then
+
+        filePath = fileDialog.SelectedItems(1)
+
+        Workbooks.Open filePath
+
+    Else
+
+        MsgBox "No file selected. Exiting the macro.", vbExclamation
+
+        Exit Sub
+
+    End If
+
+   
+
+    ' Step 2: Define the worksheet (assuming the first sheet is being used)
+
+    Set ws = ActiveWorkbook.Sheets(1)
+
+   
+
+    ' Step 3: Enable filters in the file (if not already enabled)
+
+    ws.Rows(1).AutoFilter
+
+   
+
+    ' Step 4: Unhide all columns between Column A to Column GX
+
+    For col = 1 To 179 ' Columns A to GX (A=1, GX=179)
+
+        ws.Columns(col).Hidden = False
+
+    Next col
+
+   
+
+    ' Step 5: Filter Column C for "Power Services Sales"
+
+    ws.Rows(1).AutoFilter Field:=3, Criteria1:=Array("Steam Power Sales", "No GE internal Sales Channel", "Oil & Gas Sales"), Operator:=xlFilterValues
+
+    ws.Rows("2:" & ws.Rows.Count).SpecialCells(xlCellTypeVisible).Delete
+
+    ws.AutoFilterMode = False ' Clear filter from Column C
+
+   
+
+    ' Step 6: Filter Column J for "Other OEM Fleet - Non Contractual"
+
+    ws.Rows(1).AutoFilter Field:=10, Criteria1:="Other OEM Fleet - Non Contractual"
+
+    ws.Rows("2:" & ws.Rows.Count).SpecialCells(xlCellTypeVisible).Delete
+
+    ws.AutoFilterMode = False ' Clear filter from Column J
+
+   
+
+    ' Step 7: Filter Column B for specific countries
+
+    ws.Rows(1).AutoFilter Field:=2, Criteria1:=Array("Afghanistan", "Iran", "Syria", "Sudan", "PALESTINIAN TERRITORY (GAZA STRIP)"), Operator:=xlFilterValues
+
+    ws.Rows("2:" & ws.Rows.Count).SpecialCells(xlCellTypeVisible).Delete
+
+    ws.AutoFilterMode = False ' Clear filter from Column B
+
+   
+
+    ' Step 8: Filter Column G
+
+    ws.Rows(1).AutoFilter Field:=7, Criteria1:=Array("Retired", "Inactive", "Never Built (Cancelled)", "Scrapped"), Operator:=xlFilterValues
+
+    ws.Rows("2:" & ws.Rows.Count).SpecialCells(xlCellTypeVisible).Delete
+
+    ws.AutoFilterMode = False ' Clear filter from Column
+
+   
+
+     ' Step 9: Filter Column H
+
+    ws.Rows(1).AutoFilter Field:=8, Criteria1:=Array("Steam Plant", "Nuclear", "Aero Plant", "Other Plant", "Industrial"), Operator:=xlFilterValues
+
+    ws.Rows("2:" & ws.Rows.Count).SpecialCells(xlCellTypeVisible).Delete
+
+    ws.AutoFilterMode = False ' Clear filter from Column
+
+   
+
+    
+
+    ' Step 10: Filter Column Y
+
+    ws.Rows(1).AutoFilter Field:=25, Criteria1:=Array("Boiler", "Auxiliaries", "ECS", "Aero Gas", "Aero Package", "Centrifugal Pump", "Centrifugal Compressor", "Reciprocating Compressor", "Plant DCS", "Nuclear Power Reactor", "Balance of Plant", "Turbo Expander", "Valve", "Cooling Tower", "Condenser", "Cooler", "Motor", "Gearbox", "Feed Water Heater", "Deaerator", "Fan Blower", "Air Heater", "Plant", "Pump - Horizontal Split Case", "Transformer", "Heat Exchanger", "Diesel Engine", "Axial Compressor", "Screw Compressor", "BOP-OTHER"), Operator:=xlFilterValues
+
+    ws.Rows("2:" & ws.Rows.Count).SpecialCells(xlCellTypeVisible).Delete
+
+    ws.AutoFilterMode = False ' Clear filter from Column
+
+   
+
+    'Step 11: Filter Column Z
+
+    ws.Rows(1).AutoFilter Field:=26, Criteria1:=Array("Retired", "Inactive", "Never Built (Cancelled)", "Scrapped"), Operator:=xlFilterValues
+
+    ws.Rows("2:" & ws.Rows.Count).SpecialCells(xlCellTypeVisible).Delete
+
+    ws.AutoFilterMode = False ' Clear filter from Column
+
+   
+
+     'Step 11: Filter Column AM
+
+    ws.Rows(1).AutoFilter Field:=39, Criteria1:=Array("Gas Aero OEM", "Gas Aero oOEM", "Other Aero"), Operator:=xlFilterValues
+
+    ws.Rows("2:" & ws.Rows.Count).SpecialCells(xlCellTypeVisible).Delete
+
+    ws.AutoFilterMode = False ' Clear filter from Column
+
+   
+
+    ' Step 8: Save the file with the new name - append " - Column B" to the original name
+
+    newFileName = Left(filePath, Len(filePath) - 5) & " - Light Version.xlsb"
+
+    ActiveWorkbook.SaveAs Filename:=newFileName, FileFormat:=xlExcel12 ' Save in .xlsb format
+
+   
+
+    MsgBox "File saved successfully with the name: " & newFileName
+
+End Sub
+
+ 
+
+ 
+
+ 
