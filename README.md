@@ -1,38 +1,58 @@
 # VBA---File-Light-Version-
-1. File Selection:
-We created a process where the user is asked to select an Excel file using the file dialog. The file is then opened in the macro.
-2. Enable Filters:
-We ensured that filters were enabled in the file, allowing data to be filtered by different columns.
-3. Unhide Columns A to GX:
-We implemented functionality to unhide all columns from Column A to Column GX to ensure no columns are hidden during the filtering and data removal process.
-4. Filter and Remove Rows Based on Column C:
-We applied a filter to Column C to only keep rows where the value is "Power Services Sales".
-Any rows where Column C was something other than "Power Services Sales" were deleted.
-After removing the rows, the filter on Column C was cleared.
-5. Filter and Remove Rows Based on Column J:
-We applied a filter to Column J to remove rows where the value was "Other OEM Fleet - Non Contractual".
-After removing the unwanted rows, the filter on Column J was cleared.
-6. Filter and Remove Rows Based on Column B (Countries):
-We applied a filter on Column B to remove rows where the country listed was one of the following:
-Afghanistan
-Iran
-Syria
-Sudan
-Palestinian Territory (Gaza Strip)
-After removing the rows, the filter on Column B was cleared.
-7. Save the File with Updated Name:
-After the filtering and row removal process, the file was saved with the updated name “Previous Name - Column B” to reflect the changes.
 
-Key Highlights of the Code Functionality:
 
-User Input: The user selects a binary Excel file (e.g., .xlsb).
+*The VBA macro script is designed to process a selected `.xlsb` file by applying various filters to its worksheet and then saving the modified version of the file with a new name. Here's a step-by-step breakdown of its functionality:*
 
-Data Filtering and Removal:
+ 
 
-Column C: Filters for "Power Services Sales" and deletes other rows.
+1. **File Selection**: Prompts the user to select a `.xlsb` file using a file dialog. If no file is selected, the macro exits.
 
-Column J: Filters out rows where the value is "Other OEM Fleet - Non Contractual".
+ 
 
-Column B: Filters out rows with countries like Afghanistan, Iran, Syria, Sudan, and Palestinian Territory (Gaza Strip).
+2. **Worksheet Definition**: Assumes the first sheet in the workbook is the target worksheet (`ws`).
 
-File Saving: The processed file is saved with a new name, indicating the column being filtered.
+ 
+
+3. **Enable Filters**: Ensures filters are enabled on the first row of the worksheet.
+
+ 
+
+4. **Unhide Columns**: Unhides all columns from A to GX.
+
+ 
+
+5. **Column C Filtering**: Filters out rows based on specific sales categories ("Steam Power Sales", "No GE internal Sales Channel", "Oil & Gas Sales") and deletes visible rows.
+
+ 
+
+6. **Column J Filtering**: Filters for "Other OEM Fleet - Non Contractual" and deletes visible rows.
+
+ 
+
+7. **Column B Filtering**: Filters rows based on specific countries and deletes visible rows.
+
+ 
+
+8. **Column G Filtering**: Filters rows based on the status ("Retired", "Inactive", "Never Built (Cancelled)", "Scrapped") and deletes visible rows.
+
+ 
+
+9. **Column H Filtering**: Filters for plant types ("Steam Plant", "Nuclear", "Aero Plant", "Other Plant", "Industrial") and deletes visible rows.
+
+ 
+
+10. **Column Y Filtering**: Filters for specific equipment and deletes visible rows.
+
+ 
+
+11. **Column Z Filtering**: Filters based on status similar to Column G and deletes visible rows.
+
+ 
+
+12. **Column AM Filtering**: Filters specific OEM categories ("Gas Aero OEM", "Gas Aero oOEM", "Other Aero") and deletes visible rows.
+
+ 
+
+13. **Save File**: Saves the filtered worksheet as a new file, appending " - Light Version" to the original file name.
+
+
